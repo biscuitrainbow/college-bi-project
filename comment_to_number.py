@@ -111,14 +111,14 @@ def main():
     
     
     #KNN 63%
-  
     '''
     clf = KNeighborsClassifier()
     '''
     
-    clf.fit(X_train, y_train)
-
     
+    
+    #Result
+    clf.fit(X_train, y_train)
     prediction = clf.predict(X_test)
     print(accuracy_score(y_test,prediction))
 
