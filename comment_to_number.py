@@ -47,8 +47,8 @@ def create_model():
 	# create model
     model = Sequential()
     model.add(Dense(10, input_dim=4225, activation='relu'))
-    model.add(Dense(8,activation='relu'))
     model.add(Dense(6,activation='relu'))
+    model.add(Dense(8,activation='relu'))
     model.add(Dense(2, activation='softmax'))
 	
     # Compile mode
@@ -92,32 +92,32 @@ def main():
                                                         test_size = 0.3,
                                                         random_state=1)
     
-    # Keras Deep
+    # Keras Deep 78%
     '''
     clf = KerasClassifier(build_fn=create_model, epochs=300, batch_size=10)
     '''
     
-    # SVM
+    # SVM 66%
     '''
-    parameters = {'C':[1,2,4,8,16,32],
-                  #'gamma':[0.001,0.05,0.01,0.5,0.1,0,1,2,4,8,16,32]}
-    #clf = GridSearchCV(svm.SVC(),parameters,cv=10,scoring='accuracy')   
-    #clf.best_score_*100
+    clf = svm.SVC()
     '''
     
     
-    #Decision Tree
+    #Decision Tree 75%
     '''
     clf = DecisionTreeClassifier(criterion = "entropy", random_state = 100,
                                max_depth=3, min_samples_leaf=5)
     '''
     
     
-    #KNN
+    #KNN 63%
+  
     '''
     clf = KNeighborsClassifier()
-    clf.fit(X_train, y_train)
     '''
+    
+    clf.fit(X_train, y_train)
+
     
     prediction = clf.predict(X_test)
     print(accuracy_score(y_test,prediction))
